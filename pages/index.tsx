@@ -34,12 +34,12 @@ function Home() {
                 className="object-cover h-full block mx-auto"
                 src={img.img}
               />
-              <span className="absolute top-0 right-0 text-white px-2 pr-2 text-xs md:text-sm">
+              <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
                 {img.date}
               </span>
-              <span className="absolute left-0 bottom-0 text-white px-1 pb-2 text-xs md:text-sm">
+              <div className="absolute opacity-50 bg-white text-black left-0 bottom-0  px-1 text-xs md:text-sm">
                 {img.copyright}
-              </span>
+              </div>
             </div>
           ))}
         </div>
@@ -58,13 +58,13 @@ const Right = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+    <rect width="48" height="48" fill="white" fillOpacity="0.01" />
     <path
       d="M19 12L31 24L19 36"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -76,13 +76,13 @@ const Left = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+    <rect width="48" height="48" fill="white" fillOpacity="0.01" />
     <path
       d="M31 36L19 24L31 12"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -136,27 +136,27 @@ const ZoomOut = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+    <rect width="48" height="48" fill="white" fillOpacity="0.01" />
     <path
       d="M21 38C30.3888 38 38 30.3888 38 21C38 11.6112 30.3888 4 21 4C11.6112 4 4 11.6112 4 21C4 30.3888 11.6112 38 21 38Z"
       fill="none"
       stroke="#333"
-      stroke-width="4"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinejoin="round"
     />
     <path
       d="M15 21L27 21"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M33.2218 33.2218L41.7071 41.7071"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -169,20 +169,20 @@ const Close = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+    <rect width="48" height="48" fill="white" fillOpacity="0.01" />
     <path
       d="M8 8L40 40"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8 40L40 8"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -195,34 +195,34 @@ const ZoomIn = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+    <rect width="48" height="48" fill="white" fillOpacity="0.01" />
     <path
       d="M21 38C30.3888 38 38 30.3888 38 21C38 11.6112 30.3888 4 21 4C11.6112 4 4 11.6112 4 21C4 30.3888 11.6112 38 21 38Z"
       fill="none"
       stroke="#333"
-      stroke-width="4"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinejoin="round"
     />
     <path
       d="M21 15L21 27"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 21L27 21"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M33.2218 33.2218L41.7071 41.7071"
       stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
