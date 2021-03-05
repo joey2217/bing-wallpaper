@@ -28,7 +28,6 @@ const BASE_URL = 'https://cn.bing.com'
     const dataText = fs.readFileSync(dataPath, { encoding: 'utf-8' })
     const imgList = dataText ? JSON.parse(dataText) : []
     const index = imgList.findIndex(i => i.date === enddate)
-    console.log(wallPaperUrl);
     if (index === -1) {
       const item = {
         img: wallPaperUrl,

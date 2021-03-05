@@ -2,7 +2,7 @@ import Head from 'next/head'
 import data from '../public/data.json'
 import Image from 'rc-image'
 
-function Home({ posts }) {
+function Home() {
   return (
     <>
       <Head>
