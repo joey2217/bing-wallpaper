@@ -15,14 +15,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "crawler/index.ts"  ],
+    "**/*.tsx",
+    "crawler/index.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
