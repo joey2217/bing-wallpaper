@@ -5,14 +5,13 @@ name: wall CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   schedule:
     # 定时执行，Runs at 17:00 UTC every day
-    - cron:  '0 17 * * *'
+    - cron: '0 17 * * *'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,21 +20,23 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: crawler
-      run: node crawler/index.js
-    - name: Commit files
-      run: |
-         git config --local user.email "786678257@qq.com"
-         git config --local user.name "Joey"
-         git add public/data.json
-         git commit -m "update data.json"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-         github_token: ${{ secrets.WALL_TOKEN }}
-         branch: main
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install dependencies
+        run: yarn install
+      - name: crawler
+        run: node crawler/index.js
+      - name: Commit files
+        run: |
+          git config --local user.email "786678257@qq.com"
+          git config --local user.name "Joey"
+          git add public/data.json
+          git commit -m "update data.json"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.WALL_TOKEN }}
+          branch: main
