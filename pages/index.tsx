@@ -31,13 +31,13 @@ function Home() {
               key={img.date}
             >
               <Image
-                className="object-cover h-full block mx-auto"
+                className="object-cover block"
                 src={img.img}
               />
               <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
                 {img.date}
               </span>
-              <div className="absolute opacity-50 bg-white text-black left-0 bottom-0  px-1 text-xs md:text-sm">
+              <div className="absolute opacity-50 bg-white text-black left-0 bottom-0 px-1 text-xs md:text-sm">
                 {img.copyright}
               </div>
             </div>
