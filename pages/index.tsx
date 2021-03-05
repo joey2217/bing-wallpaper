@@ -22,17 +22,23 @@ function Home({ posts }) {
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-          {data.map((i) => (
-            <div className="m-2 relative" key={i.date}>
+          {data.map((img, index) => (
+            <div
+              className={`relative ${
+                index === 0 &&
+                'row-span-2 col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2'
+              }`}
+              key={img.date}
+            >
               <Image
-                className="w-60 h-40 object-cover block mx-auto"
-                src={i.img}
+                className="object-cover h-full block mx-auto"
+                src={img.img}
               />
               <span className="absolute top-0 right-0 text-white px-2 pr-2 text-xs md:text-sm">
-                {i.date}
+                {img.date}
               </span>
               <span className="absolute left-0 bottom-0 text-white px-1 pb-2 text-xs md:text-sm">
-                {i.copyright}
+                {img.copyright}
               </span>
             </div>
           ))}

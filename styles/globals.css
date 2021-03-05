@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
-    display: inline;
+img {
+  display: inline;
+}
+
+.rc-image {
+  height: 100%;
 }
