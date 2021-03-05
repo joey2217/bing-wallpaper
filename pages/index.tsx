@@ -24,7 +24,7 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
           {data.map((img, index) => (
             <div
-              className={`relative ${
+              className={`relative flex ${
                 index === 0 &&
                 'row-span-2 col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2'
               }`}
