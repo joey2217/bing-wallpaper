@@ -33,6 +33,8 @@ function Home() {
               <Image
                 className="object-cover block"
                 src={img.img}
+                placeholder
+                alt={img.date+'-BingWallpaper'}
               />
               <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
                 {img.date}
