@@ -4,8 +4,8 @@
 name: wall CI
 
 on:
-  # push:
-    # branches: [main]
+  push:
+   branches: [main]
   schedule:
     # 定时执行，Runs at 17:00 UTC every day
     - cron: '0 17 * * *'
@@ -13,10 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+   # strategy:
+    #  matrix:
+      #  node-version: [10.x, 12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
