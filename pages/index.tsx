@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import data from '../public/data.json'
 import Image from 'rc-image'
+import { memo } from 'react'
 
 function Home() {
   return (
@@ -24,17 +25,18 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
           {data.map((img, index) => (
             <div
-              className={`relative flex ${
-                index === 0 &&
+              className={`relative flex ${index === 0 &&
                 'row-span-2 col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2'
-              }`}
+                }`}
               key={img.date}
             >
               <Image
                 className="object-cover block"
                 src={img.img}
-                placeholder
-                alt={img.date+'-BingWallpaper'}
+                placeholder={
+                  <img src="/loading.png" alt="loading" />
+                }
+                alt={img.date + '-BingWallpaper'}
               />
               <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
                 {img.date}
@@ -50,9 +52,9 @@ function Home() {
   )
 }
 
-export default Home
+export default memo(Home)
 
-const Right = () => (
+const Right = memo(() => (
   <svg
     width="24"
     height="24"
@@ -69,8 +71,9 @@ const Right = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
-const Left = () => (
+))
+
+const Left = memo(() => (
   <svg
     width="24"
     height="24"
@@ -87,9 +90,9 @@ const Left = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+))
 
-const RotateRight = () => (
+const RotateRight = memo(() => (
   <svg
     viewBox="0 0 1024 1024"
     version="1.1"
@@ -107,9 +110,9 @@ const RotateRight = () => (
       p-id="8428"
     ></path>
   </svg>
-)
+))
 
-const RotateLeft = () => (
+const RotateLeft = memo(() => (
   <svg
     viewBox="0 0 1024 1024"
     version="1.1"
@@ -128,9 +131,9 @@ const RotateLeft = () => (
       p-id="8071"
     ></path>
   </svg>
-)
+))
 
-const ZoomOut = () => (
+const ZoomOut = memo(() => (
   <svg
     width="24"
     height="24"
@@ -161,9 +164,9 @@ const ZoomOut = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+))
 
-const Close = () => (
+const Close = memo(() => (
   <svg
     width="24"
     height="24"
@@ -187,9 +190,9 @@ const Close = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+))
 
-const ZoomIn = () => (
+const ZoomIn = memo(() => (
   <svg
     width="24"
     height="24"
@@ -227,4 +230,4 @@ const ZoomIn = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+))
