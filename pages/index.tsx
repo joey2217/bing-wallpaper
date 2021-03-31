@@ -7,8 +7,6 @@ function Home() {
   return (
     <>
       <Head>
-        <title>BingWallpaper</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Image.PreviewGroup
