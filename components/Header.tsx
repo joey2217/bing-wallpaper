@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-const Logo = () => (
+const Logo = memo(() => (
   <svg
     viewBox="0 0 1024 1024"
     version="1.1"
@@ -17,15 +17,15 @@ const Logo = () => (
       fill="#ffffff"
     ></path>
   </svg>
-)
+))
 
 const Header: React.FC = () => {
   return (
     <header className="w-full h-16 bg-indigo-500 flex items-center justify-center px-10">
       <Logo />
-      <span className="text-white font-medium text-base ml-4">BingWallpaper</span>
+      <h1 className="text-white font-medium text-base ml-4">BingWallpaper</h1>
     </header>
   )
 }
 
-export default Header
+export default memo(Header)
