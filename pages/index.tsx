@@ -35,6 +35,7 @@ function Home() {
                   <img src="/loading.png" alt="loading" />
                 }
                 alt={img.date + '-BingWallpaper'}
+                loading="lazy"
               />
               <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
                 {img.date}

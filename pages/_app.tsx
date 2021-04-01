@@ -7,7 +7,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <html lang="en" />
         <title>BingWallpaper</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
