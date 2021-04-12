@@ -5,3 +5,6 @@
 img {
   display: inline;
 }
+.rc-image {
+  width: 100%;
+}

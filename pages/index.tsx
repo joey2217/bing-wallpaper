@@ -2,13 +2,13 @@ import Head from 'next/head'
 import data from '../public/data.json'
 import Image from 'rc-image'
 import { memo } from 'react'
+import qs from 'querystring'
 
 function Home() {
   return (
     <>
       <Head>
       </Head>
-
       <Image.PreviewGroup
         icons={{
           rotateLeft: <RotateLeft />,
@@ -30,7 +30,10 @@ function Home() {
             >
               <Image
                 className="object-cover block"
-                src={img.img}
+                src={index === 0 ? getThumbnail(img.img, 1280, 720) : getThumbnail(img.img)}
+                preview={{
+                  src: img.img,
+                }}
                 placeholder={
                   <img src="/loading.png" alt="loading" />
                 }
@@ -52,6 +55,13 @@ function Home() {
 }
 
 export default memo(Home)
+
+const getThumbnail = (url: string, w = 640, h = 360) => {
+  const [path, search] = url.split('?')
+  const query = qs.parse(search)
+  return path + '?' + qs.stringify({ ...query, w, h })
+}
+
 
 const Right = memo(() => (
   <svg
