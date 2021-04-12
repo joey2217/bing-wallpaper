@@ -30,9 +30,9 @@ function Home() {
             >
               <Image
                 className="object-cover block"
-                src={index === 0 ? getThumbnail(img.img, 1280, 720) : getThumbnail(img.img)}
+                src={index === 0 ? getThumbnail(img.img, 1920, 1080) : getThumbnail(img.img)}
                 preview={{
-                  src: img.img,
+                  src: getThumbnail(img.img, 1920, 1080),
                 }}
                 placeholder={
                   <img src="/loading.png" alt="loading" />
