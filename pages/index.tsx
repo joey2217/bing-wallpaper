@@ -1,69 +1,64 @@
-import Head from 'next/head'
-import data from '../public/data.json'
-import Image from 'rc-image'
-import { memo } from 'react'
-import qs from 'querystring'
+import data from "../public/data.json";
+import Image from "rc-image";
+import { memo } from "react";
+import qs from "querystring";
 
 function Home() {
   return (
-    <>
-      <Head>
-      </Head>
-      <Image.PreviewGroup
-        icons={{
-          rotateLeft: <RotateLeft />,
-          rotateRight: <RotateRight />,
-          zoomIn: <ZoomIn />,
-          zoomOut: <ZoomOut />,
-          close: <Close />,
-          left: <Left />,
-          right: <Right />,
-        }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-          {data.map((img, index) => (
-            <div
-              className={`relative flex ${index === 0 &&
-                'row-span-2 col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2'
-                }`}
-              key={img.date}
-            >
-              <Image
-                className="object-cover block"
-                src={img.img}
-                placeholder={
-                  <Image
-                    className="object-cover block"
-                    src={getThumbnail(img.img)}
-                    alt={img.date + '-BingWallpaper'}
-                    preview={false}
-                  />
-                }
-                alt={img.date + '-BingWallpaper'}
-                loading="lazy"
-              />
-              <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
-                {img.date}
-              </span>
-              <div className="absolute opacity-50 bg-white text-black left-0 bottom-0 px-1 text-xs md:text-sm">
-                {img.copyright}
-              </div>
+    <Image.PreviewGroup
+      icons={{
+        rotateLeft: <RotateLeft />,
+        rotateRight: <RotateRight />,
+        zoomIn: <ZoomIn />,
+        zoomOut: <ZoomOut />,
+        close: <Close />,
+        left: <Left />,
+        right: <Right />,
+      }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+        {data.map((img, index) => (
+          <div
+            className={`relative flex ${
+              index === 0 &&
+              "row-span-2 col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2"
+            }`}
+            key={img.date}
+          >
+            <Image
+              className="object-cover block"
+              src={
+                index === 0
+                  ? getThumbnail(img.img, 768, 432)
+                  : getThumbnail(img.img)
+              }
+              preview={{
+                src: img.img,
+              }}
+              placeholder={<img src="/loading.png" alt="loading" />}
+              alt={img.date + "-BingWallpaper"}
+              loading="lazy"
+            />
+            <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
+              {img.date}
+            </span>
+            <div className="absolute opacity-50 bg-white text-black left-0 bottom-0 px-1 text-xs md:text-sm">
+              {img.copyright}
             </div>
-          ))}
-        </div>
-      </Image.PreviewGroup>
-    </>
-  )
+          </div>
+        ))}
+      </div>
+    </Image.PreviewGroup>
+  );
 }
 
-export default memo(Home)
+export default memo(Home);
 
 const getThumbnail = (url: string, w = 384, h = 216) => {
-  const [path, search] = url.split('?')
-  const query = qs.parse(search)
-  return path + '?' + qs.stringify({ ...query, w, h })
-}
-
+  const [path, search] = url.split("?");
+  const query = qs.parse(search);
+  return path + "?" + qs.stringify({ ...query, w, h });
+};
 
 const Right = memo(() => (
   <svg
@@ -82,7 +77,7 @@ const Right = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-))
+));
 
 const Left = memo(() => (
   <svg
@@ -101,7 +96,7 @@ const Left = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-))
+));
 
 const RotateRight = memo(() => (
   <svg
@@ -121,7 +116,7 @@ const RotateRight = memo(() => (
       p-id="8428"
     ></path>
   </svg>
-))
+));
 
 const RotateLeft = memo(() => (
   <svg
@@ -142,7 +137,7 @@ const RotateLeft = memo(() => (
       p-id="8071"
     ></path>
   </svg>
-))
+));
 
 const ZoomOut = memo(() => (
   <svg
@@ -175,7 +170,7 @@ const ZoomOut = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-))
+));
 
 const Close = memo(() => (
   <svg
@@ -201,7 +196,7 @@ const Close = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-))
+));
 
 const ZoomIn = memo(() => (
   <svg
@@ -241,4 +236,4 @@ const ZoomIn = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-))
+));
