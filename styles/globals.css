@@ -8,3 +8,7 @@ img {
 .rc-image {
   width: 100%;
 }
+
+.wallpaper-image{
+  cursor: zoom-in;
+}

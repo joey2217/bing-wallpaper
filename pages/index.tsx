@@ -2,6 +2,7 @@ import data from "../public/data.json";
 import Image from "rc-image";
 import { memo } from "react";
 import qs from "querystring";
+import axios from "axios";
 
 function Home() {
   return (
@@ -26,7 +27,7 @@ function Home() {
             key={img.date}
           >
             <Image
-              className="object-cover block"
+              className="object-cover block wallpaper-image"
               src={
                 index === 0
                   ? getThumbnail(img.img, 768, 432)
@@ -39,9 +40,34 @@ function Home() {
               alt={img.date + "-BingWallpaper"}
               loading="lazy"
             />
-            <span className="absolute truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
-              {img.date}
-            </span>
+            <div className="absolute flex w-full items-center truncate top-0 right-0 opacity-50  bg-white text-black px-1 text-xs md:text-sm">
+              <Download />
+              <span
+                className="underline text-blue-800 cursor-pointer px-1"
+                onClick={() => downImg(img.img, 3840, 2160)}
+              >
+                4K
+              </span>
+              <span
+                className="underline text-blue-800 cursor-pointer px-1"
+                onClick={() => downImg(img.img, 2560, 1440)}
+              >
+                2K
+              </span>
+              <span
+                className="underline text-blue-800 cursor-pointer px-1"
+                onClick={() => downImg(img.img, 1920, 1080)}
+              >
+                1080P
+              </span>
+              <span
+                className="underline text-blue-800 cursor-pointer px-1"
+                onClick={() => downImg(img.img)}
+              >
+                720P
+              </span>
+              <span className="ml-auto">{img.date}</span>
+            </div>
             <div className="absolute opacity-50 bg-white text-black left-0 bottom-0 px-1 text-xs md:text-sm">
               {img.copyright}
             </div>
@@ -58,6 +84,32 @@ const getThumbnail = (url: string, w = 384, h = 216) => {
   const [path, search] = url.split("?");
   const query = qs.parse(search);
   return path + "?" + qs.stringify({ ...query, w, h });
+};
+
+const downImg = (url, w = 1280, h = 720) => {
+  const [_, search] = url.split("?");
+  const query = qs.parse(search);
+  // OHR.PoetrysCave_ZH-CN3196193909_UHD.jpg
+  const id = query.id as string;
+  const [ohrName] = id.split("_");
+  let name = ohrName.replace("OHR.", "") + w + "x" + h;
+  const path = getThumbnail(url, w, h);
+  axios({
+    url: path,
+    method: "GET",
+    responseType: "blob",
+  }).then((res) => {
+    const { data } = res;
+    const blob = new Blob([data], { type: data.type });
+    const downloadElement = document.createElement("a");
+    const href = window.URL.createObjectURL(blob); //创建下载的链接
+    downloadElement.href = href;
+    downloadElement.download = name || "bing-wallpaper"; //下载后文件名
+    document.body.appendChild(downloadElement);
+    downloadElement.click(); //点击下载
+    document.body.removeChild(downloadElement); //下载完成移除元素
+    window.URL.revokeObjectURL(href); //释放掉blob对象
+  });
 };
 
 const Right = memo(() => (
@@ -230,6 +282,38 @@ const ZoomIn = memo(() => (
     />
     <path
       d="M33.2218 33.2218L41.7071 41.7071"
+      stroke="#333"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+));
+
+const Download = memo(() => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 48 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 8C5 6.89543 5.89543 6 7 6H19L24 12H41C42.1046 12 43 12.8954 43 14V40C43 41.1046 42.1046 42 41 42H7C5.89543 42 5 41.1046 5 40V8Z"
+      fill="none"
+      stroke="#333"
+      strokeWidth="4"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M30 28L23.9933 34L18 28.0134"
+      stroke="#333"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M24 20V34"
       stroke="#333"
       strokeWidth="4"
       strokeLinecap="round"
