@@ -30,8 +30,8 @@ jobs:
         run: node crawler/index.js
       - name: Commit files
         run: |
-          git config --local user.email "786678257@qq.com"
-          git config --local user.name "Joey"
+          git config --local user.email "github-actions-bot@qq.com"
+          git config --local user.name "github-actions-bot"
           git add public/data.json
           git commit -m "update data.json"
       - name: Push changes
