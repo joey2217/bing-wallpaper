@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
+import Link from "next/link";
 
 const Logo = memo(() => (
   <svg
@@ -17,15 +18,26 @@ const Logo = memo(() => (
       fill="#ffffff"
     ></path>
   </svg>
-))
+));
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full h-16 bg-indigo-500 flex items-center justify-center px-10">
-      <Logo />
-      <h1 className="text-white font-medium text-base ml-4">BingWallpaper</h1>
+    <header className="w-full h-16 bg-indigo-500 flex items-center justify-between px-10">
+      <Link href="/">
+        <a className="flex items-center">
+          <Logo />
+          <h1 className="text-white font-medium text-base ml-4">
+            BingWallpaper
+          </h1>
+        </a>
+      </Link>
+      <div className="flex items-center">
+        <Link href="/2020">
+          <a>2020</a>
+        </Link>
+      </div>
     </header>
-  )
-}
+  );
+};
 
-export default memo(Header)
+export default memo(Header);
