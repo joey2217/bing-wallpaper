@@ -1,13 +1,16 @@
 import axios from "axios";
-import qs from "querystring";
 
 export function getThumbnail(url: string, w = 384, h = 216) {
   const [path, search] = url.split("?");
-  const query = qs.parse(search);
-  return path + "?" + qs.stringify({ ...query, w, h });
+  // const query = qs.parse(search);
+  // return path + "?" + qs.stringify({ ...query, w, h });
+  const searchParams = new URLSearchParams(search);
+  searchParams.set("w", String(w));
+  searchParams.set("h", String(h));
+  return path + "?" + searchParams.toString();
 }
 
-export function downImg(url, w = 1280, h = 720) {
+export function downImg(url: string, w = 1280, h = 720) {
   const [_, search] = url.split("?");
   const query = qs.parse(search);
   // OHR.PoetrysCave_ZH-CN3196193909_UHD.jpg
@@ -32,3 +35,5 @@ export function downImg(url, w = 1280, h = 720) {
     window.URL.revokeObjectURL(href); //释放掉blob对象
   });
 }
+
+export function nextWeek() {}
