@@ -1,11 +1,13 @@
-import React, { memo } from "react";
-import data from "../public/data.json";
-import ImagePreview from '../components/ImagePreview'
+import type { NextPage } from 'next'
+import { Button } from "antd";
 
-function Home() {
+const Home: NextPage = () => {
   return (
-    <ImagePreview imgList={data}/>
+    <div>
+      <Button type="primary">Button</Button>
+      ING
+    </div>
   );
 }
 
-export default memo(Home);
+export default Home

@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs')
 
 const imageUrl =
-  'https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1612409408851&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&mkt=zh-CN'
+  'https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=7&nc=1612409408851&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&mkt=zh-CN'
 
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.81'
@@ -14,7 +14,7 @@ const BASE_URL = 'https://cn.bing.com'
   ; (async () => {
     const {
       data: {
-        images: [{ url, enddate, copyright }],
+        images
       },
     } = await axios({
       url: imageUrl,
@@ -23,20 +23,14 @@ const BASE_URL = 'https://cn.bing.com'
         'User-Agent': UA,
       },
     })
-    const wallPaperUrl = BASE_URL + url
-    // console.log(wallPaperUrl);
-    // console.log(copyright);
+    const list = images.map(item => ({
+      img: BASE_URL + item.url,
+      date: item.enddate,
+      copyright: item.copyright,
+    }))
     const dataPath = path.resolve(__dirname, '../public/data.json')
     const dataText = fs.readFileSync(dataPath, { encoding: 'utf-8' })
-    const imgList = dataText ? JSON.parse(dataText) : []
-    const index = imgList.findIndex(i => i.date === enddate)
-    if (index === -1) {
-      const item = {
-        img: wallPaperUrl,
-        date: enddate,
-        copyright,
-      }
-      imgList.unshift(item)
-      fs.writeFileSync(dataPath, JSON.stringify(imgList))
-    }
+    let imgList = dataText ? JSON.parse(dataText) : []
+    imgList = list.concat(imgList)
+    fs.writeFileSync(dataPath, JSON.stringify(imgList,null,2))
   })()

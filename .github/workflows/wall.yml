@@ -8,7 +8,7 @@ on:
   # branches: [main]
   schedule:
     # 定时执行，Runs at 17:00 UTC every day
-    - cron: '0 17 * * *'
+    - cron: '0 17 * * 0'
 
 jobs:
   build:
