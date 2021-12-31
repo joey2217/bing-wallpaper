@@ -1,4 +1,8 @@
 import axios from "axios";
+import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+
+dayjs.extend(weekOfYear);
 
 export function getThumbnail(url: string, w = 384, h = 216) {
   const [path, search] = url.split("?");
@@ -12,9 +16,9 @@ export function getThumbnail(url: string, w = 384, h = 216) {
 
 export function downImg(url: string, w = 1280, h = 720) {
   const [_, search] = url.split("?");
-  const query = qs.parse(search);
+  const query = new URLSearchParams(search);
   // OHR.PoetrysCave_ZH-CN3196193909_UHD.jpg
-  const id = query.id as string;
+  const id = query.get("id") as string;
   const [ohrName] = id.split("_");
   let name = ohrName.replace("OHR.", "") + w + "x" + h;
   const path = getThumbnail(url, w, h);
@@ -36,4 +40,11 @@ export function downImg(url: string, w = 1280, h = 720) {
   });
 }
 
-export function nextWeek() {}
+export function getWeekTime(date: dayjs.Dayjs): string {
+  let year = date.year();
+  const week = date.week();
+  if (week === 1 && date.month() > 1) {
+    year = year + 1;
+  }
+  return `${year} 年 第 ${week} 周`;
+}

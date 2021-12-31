@@ -1,2 +1,6 @@
-@import '~antd/dist/antd.variable.css';
+@import "~antd/dist/antd.variable.css";
 /* @import '~antd/dist/antd.dark.css'; */
+
+.ant-image {
+  display: block;
+}
