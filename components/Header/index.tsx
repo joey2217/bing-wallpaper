@@ -12,8 +12,8 @@ const Header: React.FC = () => {
           <h2 className={styles.title}>BingWallpaper</h2>
         </a>
       </Link>
-      <Link href="/2020">
-        <a className={styles.link}>2020</a>
+      <Link href="/2021">
+        <a className={styles.link}>2021</a>
       </Link>
     </header>
   );

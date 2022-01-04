@@ -74,7 +74,7 @@ const ImagePreview: React.FC<Props> = ({ imgList }) => {
               >
                 720P
               </span>
-              <span style={{ marginLeft: "1rem" }}>{img.date}</span>
+              <span style={{ marginLeft: "0.5rem" }}>{img.date}</span>
             </div>
             <div
               className={styles.copyright}

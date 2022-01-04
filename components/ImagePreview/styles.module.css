@@ -21,10 +21,10 @@
   color: #fff;
 }
 .downloadItem {
-  text-decoration-color: initial;
+  text-decoration-line: underline;
   color: #6aa2e6;
   cursor: pointer;
-  padding: 0 0.2rem;
+  padding-left: 0.5rem;
 }
 .copyright {
   position: absolute;
@@ -56,20 +56,21 @@
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     font-size: 14px;
   }
-}
+} */
 
-@media (min-width: 992px) {
+@media (min-width: 960px) {
   .grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    font-size: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 @media (min-width: 1600px) {
   .grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
