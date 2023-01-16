@@ -11,6 +11,7 @@
   margin-bottom: 0;
   margin-left: 0.5rem;
   color: #fff;
+  margin-right: auto;
 }
 
 .logo{
@@ -20,4 +21,5 @@
 
 .link{
   font-size: 16px;
+  padding-left: 16px;
 }

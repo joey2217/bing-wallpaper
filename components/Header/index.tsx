@@ -15,6 +15,9 @@ const Header: React.FC = () => {
       <Link href="/2021">
         <a className={styles.link}>2021</a>
       </Link>
+      <Link href="/2022">
+        <a className={styles.link}>2022</a>
+      </Link>
     </header>
   );
 };
