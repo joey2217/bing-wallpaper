@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: '**.bing.com',
       },
+      {
+        hostname: '**.qhimg.com',
+      },
     ],
   },
 }

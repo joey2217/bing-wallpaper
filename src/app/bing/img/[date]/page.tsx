@@ -37,7 +37,7 @@ export default function Page({ params }: { params: { date: string } }) {
   const imgSrc = getThumbnail(item.img, 1280, 720)
 
   return (
-    <div className="text-sm md:text-base">
+    <div className="text-sm md:text-base my-2">
       <div className="flex items-center justify-between mb-2">
         <Link href={`/bing/${year}`}> ❮ 返回</Link>
         <div>{item.date}</div>

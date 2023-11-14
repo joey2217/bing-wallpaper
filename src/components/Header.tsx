@@ -1,11 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-interface Props {
-  active?: 'bing'
-}
-
-const Header: React.FC<Props> = ({ active = 'bing' }) => {
+const Header: React.FC = () => {
   return (
     <header className="h-10 px-1 md:px-2 bg-base-300 flex items-center gap-2">
       <svg
@@ -23,11 +19,14 @@ const Header: React.FC<Props> = ({ active = 'bing' }) => {
       </svg>
       <span>壁纸</span>
       <nav className="flex items-center gap-1 md:gap-2">
-        <Link
-          href="/"
-          className={`link ${active === 'bing' ? 'text-primary' : ''}`}
-        >
+        <Link href="/bing" className="link">
           Bing壁纸
+        </Link>
+        <Link href="/bing/2022" className="link">
+          Bing2022
+        </Link>
+        <Link href="/bing/2021" className="link">
+          Bing2021
         </Link>
       </nav>
     </header>
