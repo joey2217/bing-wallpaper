@@ -1,5 +1,3 @@
-// import axios from 'axios'
-const axios = require('axios')
 const path = require('path')
 const fs = require('fs')
 
@@ -11,26 +9,44 @@ const UA =
 
 const BASE_URL = 'https://cn.bing.com'
 
-  ; (async () => {
-    const {
-      data: {
-        images
-      },
-    } = await axios({
-      url: imageUrl,
-      method: 'GET',
-      headers: {
-        'User-Agent': UA,
-      },
-    })
-    const list = images.map(item => ({
-      img: BASE_URL + item.url,
-      date: item.enddate,
-      copyright: item.copyright,
-    }))
-    const dataPath = path.resolve(__dirname, '../public/data.json')
-    const dataText = fs.readFileSync(dataPath, { encoding: 'utf-8' })
-    let imgList = dataText ? JSON.parse(dataText) : []
-    imgList = list.concat(imgList)
-    fs.writeFileSync(dataPath, JSON.stringify(imgList,null,2))
-  })()
+async function fetchData() {
+  const res = await fetch(imageUrl, {
+    headers: {
+      'User-Agent': UA,
+    },
+  })
+  const { images } = await res.json()
+  const list = images.map((item) => ({
+    img: BASE_URL + item.url,
+    date: item.enddate,
+    copyright: item.copyright,
+  }))
+  const dataPath = path.resolve(__dirname, '../public/data.json')
+  const dataText = fs.readFileSync(dataPath, { encoding: 'utf-8' })
+  let imgList = dataText ? JSON.parse(dataText) : []
+  imgList = list.concat(imgList)
+  fs.writeFileSync(dataPath, JSON.stringify(imgList, null, 2))
+}
+fetchData()
+
+// ;(async () => {
+//   const {
+//     data: { images },
+//   } = await fetch({
+//     url: imageUrl,
+//     method: 'GET',
+//     headers: {
+//       'User-Agent': UA,
+//     },
+//   })
+//   const list = images.map((item) => ({
+//     img: BASE_URL + item.url,
+//     date: item.enddate,
+//     copyright: item.copyright,
+//   }))
+//   const dataPath = path.resolve(__dirname, '../public/data.json')
+//   const dataText = fs.readFileSync(dataPath, { encoding: 'utf-8' })
+//   let imgList = dataText ? JSON.parse(dataText) : []
+//   imgList = list.concat(imgList)
+//   fs.writeFileSync(dataPath, JSON.stringify(imgList, null, 2))
+// })()
