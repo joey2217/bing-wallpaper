@@ -14,7 +14,7 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
         <Link
           href={`/bing/img/${item.date}`}
           key={item.date}
-          className={`${index === 0 ? 'row-span-2 col-span-2' : ''} relative text-xs md:text-sm`}
+          className={`${index === 0 ? 'row-span-2 col-span-2' : ''} relative block text-xs md:text-sm`}
           title="点击查看详情"
         >
           <Image

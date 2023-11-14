@@ -1,5 +1,11 @@
 import type { ListData, Cate } from '@/types'
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+
+export const metadata: Metadata = {
+  title: '360壁纸',
+  description: '360壁纸',
+}
 
 export default async function Page({}: {}) {
   const res = await fetch(

@@ -3,8 +3,8 @@ import './globals.css'
 import Header from '@/components/Header'
 
 export const metadata: Metadata = {
-  title: 'Wallpaper',
-  description: 'Wallpaper',
+  title: 'Bing壁纸',
+  description: 'Bing壁纸',
 }
 
 export default function RootLayout({
