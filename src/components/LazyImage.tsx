@@ -8,7 +8,7 @@ type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
 }
 
 export default function LazyImage({
-  placeholderSrc = '/loading200x300.svg',
+  placeholderSrc = '/loading.png',
   src,
   alt,
   ...props
@@ -43,7 +43,7 @@ export default function LazyImage({
       src={placeholderSrc}
       onError={(e) => {
         ;(e.target as HTMLImageElement).onerror = null
-        ;(e.target as HTMLImageElement).src = '/error200x300.svg'
+        ;(e.target as HTMLImageElement).src = '/loading.png'
       }}
     />
   )
