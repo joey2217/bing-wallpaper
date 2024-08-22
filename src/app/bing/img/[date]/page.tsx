@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import DownloadImage from '@/components/DownloadImage'
 import { getThumbnail } from '@/utils'
+import LazyImage from '@/components/LazyImage'
 
 export default function Page({ params }: { params: { date: string } }) {
   const { date } = params
@@ -53,7 +54,7 @@ export default function Page({ params }: { params: { date: string } }) {
         </div>
       </div>
       <div className="my-2 flex items-center justify-center">
-        <Image
+        <LazyImage
           src={imgSrc}
           alt={item.date}
           width={1080}

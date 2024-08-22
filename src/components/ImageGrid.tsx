@@ -1,7 +1,7 @@
 import type { BingItem } from '@/types'
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import LazyImage from './LazyImage'
 
 interface Props {
   items: BingItem[]
@@ -17,7 +17,7 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
           className={`${index === 0 ? 'row-span-2 col-span-2' : ''} relative block text-xs md:text-sm`}
           title="点击查看详情"
         >
-          <Image
+          <LazyImage
             src={item.img}
             alt={item.date}
             width={480}

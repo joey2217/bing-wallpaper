@@ -1,5 +1,5 @@
+import LazyImage from '@/components/LazyImage'
 import { ListData, ImgData } from '@/types'
-import Image from 'next/image'
 
 export default async function Page({ params }: { params: { cate: string } }) {
   const res = await fetch(
@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: { cate: string } }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
       {data.data.map((item) => (
-        <Image
+        <LazyImage
           key={item.id}
           src={item.url_thumb}
           alt={item.id}
