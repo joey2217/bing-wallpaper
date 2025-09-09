@@ -1,12 +1,8 @@
-import type { Metadata } from 'next'
-import { redirect } from 'next/navigation'
+import data from "../../../public/data.json";
+import ImageGrid from "@/components/ImageGrid";
 
-export const metadata: Metadata = {
-  title: 'Bing壁纸',
-  description: 'Bing壁纸',
-}
+export const revalidate = 86400;
 
-export default function Page({}: {}) {
-  redirect(`/bing/${new Date().getFullYear()}`)
-  return null
+export default async function Page() {
+  return <ImageGrid items={data} />;
 }

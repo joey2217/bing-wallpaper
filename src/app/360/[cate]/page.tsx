@@ -1,9 +1,10 @@
 import LazyImage from '@/components/LazyImage'
 import { ListData, ImgData } from '@/types'
 
-export default async function Page({ params }: { params: { cate: string } }) {
+export default async function Page({ params }: { params: Promise<{ cate: string }> }) {
+  const { cate } = await params
   const res = await fetch(
-    `http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid=${params.cate}&start=0`
+    `http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid=${cate}&start=0`
   )
   const data: ListData<ImgData[]> = await res.json()
   return (

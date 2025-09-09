@@ -1,21 +1,20 @@
-import data from '../../../../public/data.json'
-import data_2022 from '../../../../public/2022.json'
-import data_2021 from '../../../../public/2021.json'
-import ImageGrid from '@/components/ImageGrid'
+import data from "../../../../public/data.json";
+import ImageGrid from "@/components/ImageGrid";
+import { BingItem } from "@/types";
 
-export const revalidate = 86400
+export const revalidate = 86400;
 
-export default function Page({ params }: { params: { year: string } }) {
-  const { year } = params
+export default async function Page({ params }: { params: Promise<{ year: string }> }) {
+  const { year } = await params;
 
-  let items = []
-  if (year === '2022') {
-    items = data_2022
-  } else if (year === '2021') {
-    items = data_2021
-  } else {
-    items = data
-  }
+  let items: BingItem[] = [];
+  await import(`../../../../public/${year}.json`)
+    .then((res) => {
+      items = res.default;
+    })
+    .catch(() => {
+      items = data;
+    });
 
-  return <ImageGrid items={items} />
+  return <ImageGrid items={items} />;
 }

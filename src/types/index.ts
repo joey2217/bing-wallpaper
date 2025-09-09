@@ -44,7 +44,7 @@ export interface ImgData {
   ext_2: string;
   utag: string;
   tempdata: string;
-  rdata: any[];
+  rdata: unknown[];
   img_1600_900: string;
   img_1440_900: string;
   img_1366_768: string;
