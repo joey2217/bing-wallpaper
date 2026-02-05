@@ -9,12 +9,12 @@ const Header: React.FC = () => {
   const years = Array.from({ length: now - start }, (_, i) => now - i - 1)
   return (
     <header className="h-10 px-1 md:px-2 bg-base-300 flex items-center gap-2">
-      <Link href="/bing" className="flex items-center gap-1 md:gap-2">
+      <Link href="/bing" className="shrink-0 flex items-center gap-1 md:gap-2">
         <ImageIcon />
         <span>壁纸</span>
       </Link>
-      <nav className="flex items-center gap-1 md:gap-2">
-        <Link href="/bing" className="link">
+      <nav className="grow overflow-auto flex items-center gap-1 md:gap-2">
+        <Link href="/bing" className="link shrink-0">
           Bing壁纸
         </Link>
         {years.map((year) => (
