@@ -2,6 +2,7 @@ import type { BingItem } from '@/types'
 import React from 'react'
 import Link from 'next/link'
 import LazyImage from './LazyImage'
+import { getThumbnail } from '@/utils'
 
 interface Props {
   items: BingItem[]
@@ -18,7 +19,7 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
           title="点击查看详情"
         >
           <LazyImage
-            src={item.img}
+            src={index === 0 ? getThumbnail(item.img, 768, 432) : getThumbnail(item.img)}
             alt={item.date}
             width={480}
             height={270}
