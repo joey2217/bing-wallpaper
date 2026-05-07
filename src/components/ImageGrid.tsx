@@ -25,8 +25,8 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
             height={270}
             className="aspect-video w-full object-cover"
           />
-          {/* <div className="absolute top-0 right-0 bg-slate-500/50">{item.date}</div> */}
-          {/* <div className="absolute bottom-0 left-0 bg-slate-500/50">{item.copyright}</div> */}
+          <div className="absolute top-0 right-0 bg-slate-500/50 hidden">{item.date}</div>
+          <div className="absolute bottom-0 left-0 bg-slate-500/50 hidden">{item.copyright}</div>÷\
         </Link>
       ))}
     </section>
