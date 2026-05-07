@@ -1,11 +1,11 @@
-import type { BingItem } from '@/types'
-import React from 'react'
-import Link from 'next/link'
-import LazyImage from './LazyImage'
-import { getThumbnail } from '@/utils'
+import type { BingItem } from "@/types";
+import React from "react";
+import Link from "next/link";
+import LazyImage from "./LazyImage";
+import { getThumbnail } from "@/utils";
 
 interface Props {
-  items: BingItem[]
+  items: BingItem[];
 }
 
 const ImageGrid: React.FC<Props> = ({ items }) => {
@@ -15,7 +15,7 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
         <Link
           href={`/bing/img/${item.date}`}
           key={item.date}
-          className={`${index === 0 ? 'row-span-2 col-span-2' : ''} relative block text-xs md:text-sm`}
+          className={`${index === 0 ? "row-span-2 col-span-2" : ""} relative block text-xs md:text-sm`}
           title="点击查看详情"
         >
           <LazyImage
@@ -25,12 +25,12 @@ const ImageGrid: React.FC<Props> = ({ items }) => {
             height={270}
             className="aspect-video w-full object-cover"
           />
-          <div className="absolute top-0 right-0 bg-slate-500/50">{item.date}</div>
-          <div className="absolute bottom-0 left-0 bg-slate-500/50">{item.copyright}</div>
+          {/* <div className="absolute top-0 right-0 bg-slate-500/50">{item.date}</div> */}
+          {/* <div className="absolute bottom-0 left-0 bg-slate-500/50">{item.copyright}</div> */}
         </Link>
       ))}
     </section>
-  )
-}
+  );
+};
 
-export default ImageGrid
+export default ImageGrid;
